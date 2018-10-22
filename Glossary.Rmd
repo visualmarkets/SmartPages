@@ -1,0 +1,82 @@
+---
+title: "Glossary"
+author: "Ricky Pickering"
+date: "4/8/2018"
+output:
+  html_document:
+    toc: true
+    number_sections: true
+---
+
+# Managed Account Components
+
+Each of the six segments of the larger managed account industry, while comprising different products or delivered in different formats, all contain the following six key attributes. Collectively, these attributes make managed accounts a distinct and systematic investment product. Although it is arguable that some of Cerulli's segments of managed accounts do not adhere strictly to all of the following, Cerulli is confident that the spirit of all of these attributes is found in the programs we have identified. Moreover, with the onset of unified managed account (UMA) platforms, the industry stands poised to deliver product-neutral managed account services truly based in these tenets. The six attributes are:
+
+## Client Profiling
+The managed account process begins with client profiling, with financial consultants working with clients to de- velop a deep understanding of their assets, liabilities, risk tolerance, and goals. Once an investor profile has been developed, a proposal is generated that includes either recommended portfolios or individual asset managers, depending upon the type of program, to help achieve certain goals within certain risk parameters.
+
+## Asset Allocation
+The managed account program must be based on a viable asset allocation model. Studies show that asset alloca- tion is the single greatest factor impacting portfolio performance, and the incorporation of modern portfolio theory is a key advantage of managed accounts. Asset allocation shows up most strongly in the mutual fund advisory arrangement, wherein a client might be assigned to one of 12 different models with each one containing six to eight funds. In separate account programs, reps are encouraged, but often not required, to allocate among managers. Ongoing Monitoring
+Typically, this means a face-to-face visit twice per year, or as needed, in addition to quarterly communications. As part of the monitoring process, refinements are made to the portfolios, often quarterly (or when appropriate), to reflect current market conditions or changes in specific client goals.
+
+## Consolidated Statements
+Managed account programs must also provide consolidated statements, detailing all account activity, including a client's relationships with multiple money managers as well as individual security positions managed by each one. Separate trade confirmations are generated for buy-and-sell activity across an investor's portfolio. Cus- tomized and tailored reports are produced for clients, illustrating the value of their investments.
+
+## Identifiable Fee
+The fee paid by the client must be discrete and identifiable. Breaking out the fee is important to the future of the rep-client relationship, as it is an institutionalized way to keep the rep engaged in providing ongoing personalized attention. The unbundled advisory fee is particularly evident in mutual-fund-based programs in which the advisory fee is broken out from the underlying blended mix of mutual funds.
+
+## Asset-Based Fee
+Managed account clients are also charged an asset-based fee for the range of services provided above, including trading, custody, and ongoing advice. This fee is charged to the client's account and paid on a quarterly basis, typically in arrears. Commissions are not charged in subadvisory separate account programs, though in open separate account programs in which clients have an additional contract directly with the asset manager, clients may also elect to pay some form of directed brokerage commissions or fee plus ticket charges.
+
+<br>
+
+# Managed Account Programs
+
+## Mutual fund advisory programs
+Discretionary and nondiscretionary programs designed to systematically allocate investors' assets across mutual funds. Services include client profiling, account monitoring, and portfolio rebalancing. An asset-based fee of 1.25%, for example, is charged instead of commission. There are three types of mutual fund advisory programs, differentiated by an advisor's ability to influence final portfolio construction: packaged, hybrid, and open.
+
+### Packaged programs
+Representing the earliest versions of fund advisory programs, packaged offerings remit investment deci- sion-making responsibilities to central research committees. Advisors select from packaged investment models for clients based on individual risk-and-return profiles.
+
+### Hybrid programs
+Offering more choice and flexibility than packaged programs, hybrid offerings allow advisors to populate centrally provided asset allocation models with funds typically from a select list. Adjustments may also be made to the allocation models themselves to meet individual client needs.
+
+### Open programs
+As the name suggests, these programs offer advisors a great degree of flexibility in building fee-based mutual fund portfolios for clients. From a client profile, an advisor typically has broad discretion to cus- tomize an asset allocation for each client. These programs are most typically found among independent broker/dealers.
+
+## ETF advisory programs
+Discretionary and nondiscretionary programs designed to systematically allocate investors’ assets across various ETFs. Services include client profiling, account monitoring, and portfolio rebalancing. An asset-based fee is charged instead of commission. There are three types of ETF advisory programs, differentiated by an advisor's ability to influence final portfolio construction: packaged, hybrid, and open (see packaging explanation under Mutual Fund Advisory program definition).
+
+## Rep-as-advisor programs
+Fee-based nondiscretionary advisory accounts in which the advisor must obtain approval each time a change is made to the account or its investments. However, as with rep-as-portfolio-manager programs, advice is an es- sential element of this type of program, and advisors and firms must be registered with both the Financial Industry Regulatory Authority (FINRA) and the Securities and Exchange Commission (SEC). These programs typically use individual securities and mutual funds.
+
+## Rep-as-portfolio-manager (RPM) programs
+Fee-based discretionary advisory programs in which financial advisors act as money managers for their clients by taking full responsibility for selecting portfolios of securities. The advisor has discretion over these fee-based accounts (either an asset-based fee or alternative fee structure). Advisors must go through training or meet criteria to qualify for participation in the program. There is often both a senior- and junior-level version of the program, differentiated by how much flexibility is given to the advisor in building portfolios. Advisors who oversee these accounts (and their firms) must be registered with both FINRA and the SEC.
+
+## Separate account consultant programs
+Programs in which asset managers administer portfolios of individual securities for investors in discretionary sep- arate accounts. Account minimums are typically $100,000 to $250,000, and may be higher. A bundled asset- based fee (often 2.5% to 3% before breakpoints and discounts from negotiation) covers money management, trading, and custody. There are two classifications of separate account programs; subadvisory programs and open programs.
+
+### Subadvisory programs
+Single-contract arrangements in which a sanctioned roster of asset managers is offered on the platform and in which sponsors determine account minimums and management fees.
+
+### Open programs
+The open category consists of both dual-contract programs and proprietary programs (both of which are systematically unaddressable by third-party asset managers).
+* Dual-contract programs In dual-contract programs, there are a virtually unlimited number of managers available on the platform, and asset managers maintain an additional contract directly with the in- vestor.
+* Proprietary programs Proprietary programs are those “closed architecture” offerings where an asset manager affiliated with the sponsor provides asset management for the client. Asset management for these platforms should be conducted through a platform similar to subadvisory programs—port- folios should track to a model (often delivered through APL).
+
+## Unified managed account (UMA) programs
+Discretionary and nondiscretionary fee-based programs for which multiple investment vehicles (e.g., separate accounts via model portfolios, mutual funds, ETFs, and rep-selected individual securities) are used to build client portfolios in a single environment. A UMA may consist of multiple managed account programs feeding into a single UMA process. Overlay management is a necessary feature of UMA programs. UMA platforms suggest the capability for program sponsors to take a very holistic look at an investor's holdings, and service clients with a range of solutions to combine a broad asset allocation plan along with elements of an asset allocation (taxable vs. nontaxable account) strategy.
+
+### Model portfolios
+Situations in which asset managers are hired as research providers and periodically submit portfolio holdings infor- mation to a program sponsor or overlay manager.
+
+<br>
+
+# Multiaffiliate
+Cerulli defines multiaffiliate (a.k.a. multiboutique) asset managers as firms that assemble products managed solely or largely by affiliated asset managers, delegating the majority of security selection and analysis to self-governing. In contrast, we define managers of managers as those who work largely or solely with unaffiliated subadvisors. (for more information on affiliated and unaffiliated managers see “subadvisory”).
+
+<br>
+
+# Overlay management
+The goal of overlay management is to simplify, centralize, and systematize a process that has been occurring throughout the fee-based industry for years. In its most basic form, overlay management facilitates the acceptance of model portfolios and the execution based on that model for client accounts. Originally, the benefit of overlay was to systematically realize the tax-management features of separate accounts (e.g., tax-loss harvesting on an ongoing basis and client restrictions). The overlay process sits between the intellectual capital of the asset manager (i.e., the model portfolio) and the client account, which allows client-specific information (e.g., tax budgets and other invest- ment positions) to augment how the model portfolio is applied to the client account.
+

@@ -1,0 +1,111 @@
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# library(tidyverse)
+
+library(lorem)
+library(highcharter)
+# library(ggplot2)
+source("ChartStyle.R")
+# sample(c(1:100), 3) %>% lipsum::lipsum[.]
+
+```
+
+# Chapter Summary Rep-as-Advisor
+
+## Key Take-Aways
+
+* Lorem ipsum dolor sit amet, consectetur adipiscing elit. ^1^
+* Fusce nec quam ut tortor interdum pulvinar id vitae magna. ^2^
+* Curabitur commodo consequat arcu et lacinia.
+* Proin at diam vitae lectus dignissim auctor nec dictum lectus.
+
+## Key Implications
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec quam ut tortor interdum pulvinar id vitae magna. Curabitur commodo consequat arcu et lacinia. Proin at diam vitae lectus dignissim auctor nec dictum lectus. Fusce venenatis eros congue velit feugiat, ac aliquam ipsum gravida. Cras bibendum malesuada est in tempus. Suspendisse tincidunt, nisi non finibus consequat, ex nisl condimentum orci, et dignissim neque est vitae nulla. Aliquam ut purus neque. Maecenas justo orci, semper eget purus eu, aliquet molestie mi. Duis convallis ut erat at faucibus. Quisque malesuada ante elementum, tempor felis et, faucibus orci. Praesent iaculis nisi lorem, non faucibus neque suscipit eu. Ut porttitor risus eu convallis tristique. Integer ac mauris a ex maximus consequat eget non felis. Pellentesque quis sem aliquet, feugiat ligula vel, convallis sapien. Ut suscipit nulla leo, id interdum justo ullamcorper et. Morbi porttitor viverra elit a dignissim.
+
+Integer vel placerat purus. Nulla facilisi. Etiam odio magna, porttitor et est nec, placerat pellentesque ex. Suspendisse aliquet facilisis elit, in placerat quam scelerisque sagittis. Pellentesque porttitor porta massa. In nec elit placerat, aliquet est a, mollis erat. Morbi congue ac nisi nec interdum. Nullam vehicula rutrum ex, quis ultrices nunc feugiat vitae. In accumsan nunc sapien, at consequat velit semper eget. Suspendisse mi tellus, elementum ut faucibus eu, sollicitudin vitae sapien.
+
+
+*1. This is an example of a footnote! I guess I need to make it longer because you guys probably love long footnotes.*
+
+*2. Why not have two of these footnotes. IDK what I'm trying to prove but here it is.*
+
+# 7.01 RA Program Assets
+
+## Exhibits {.tabset}
+
+### Scatter Plot
+```{r AssetChunkScatter, echo=FALSE, message=FALSE, warning=FALSE, results='asis'}
+data(diamonds, economics_long, mpg, package = "ggplot2")
+hchart(mpg, "scatter", hcaes(x = displ, y = hwy, group = class)) %>% 
+  hc_title(text = "Scott this is a random scatter plot.", align = 'left') %>%
+  hc_subtitle(text = "Sources: Cerulli Associates & Pickering Associates",
+              align = 'left') %>%
+  hc_exporting(enabled = TRUE) %>%
+
+  hc_add_theme(caTheme)
+```
+
+### Other Plot
+```{r AssetChunkZoom, echo = FALSE, results = 'asis', message=FALSE, warning=FALSE}
+data(diamonds, package = 'ggplot2')
+hchart(diamonds$price, name = "Price") %>%
+  hc_title(text = "Scott you can zoom on this plot!", align = 'left') %>%
+  hc_subtitle(text = "Sources: Cerulli Associates & Pickering Associates",
+              align = 'left') %>%
+  hc_exporting(enabled = TRUE) %>%
+  hc_add_theme(caTheme)
+```
+
+*What I'm trying to do here is show that we can stack related charts together. Users could look at the total MA insdustry on one tab and then click to see marketshare.*
+
+## Key Take-Aways
+
+* Ut sodales porttitor mauris eget gravida.
+* Suspendisse mi tellus, elementum ut faucibus eu, sollicitudin vitae sapien.
+* Proin fermentum quam vitae turpis egestas pellentesque.
+
+## Key Implications
+
+Nam eget tortor arcu. Sed aliquet porttitor felis at luctus. Morbi iaculis, felis varius blandit iaculis, elit nibh volutpat nulla, nec faucibus nibh sapien a ipsum. Cras egestas libero nec porta condimentum. Proin tincidunt nulla in enim lacinia luctus. Nullam faucibus, justo eget efficitur consequat, ipsum velit semper libero, eu consectetur arcu nisl in nunc. Etiam eget imperdiet velit, dapibus ornare leo. Interdum et malesuada fames ac ante ipsum primis in faucibus. Phasellus vitae finibus massa, ut condimentum nisi. Maecenas quis tellus tristique, molestie tortor in, eleifend ipsum. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed interdum nibh eu nulla ultrices, ac hendrerit ex ullamcorper.
+
+Suspendisse sed cursus nisi, et eleifend dui. In porttitor eget nisi a porttitor. Cras sit amet tortor non dolor laoreet maximus eget eget lorem. Maecenas ullamcorper ex eu ullamcorper dictum. Nunc maximus ultrices justo, at vehicula libero ultricies a. Nunc tortor tellus, suscipit sollicitudin nulla at, venenatis finibus neque. Integer ac risus in arcu lobortis ornare quis sit amet enim.                                                                                                                                           Suspendisse ullamcorper orci ac luctus pretium. Duis fermentum pulvinar tellus ac ultricies. Suspendisse vulputate tempor sapien, sit amet facilisis tortor. Sed ac tortor rhoncus, hendrerit est et, porttitor arcu. Vestibulum et luctus dui, nec pellentesque quam. Sed at semper lorem, faucibus ultrices eros. Proin sed aliquam nibh. In rhoncus ornare ex id rhoncus. Suspendisse tristique in diam sit amet eleifend. Aliquam non augue cursus, venenatis leo in, laoreet turpis.
+
+
+# 7.02 RA Program Leaderboard
+<br><br>
+
+## Top-10 Managed Accounts Leaderboard
+
+```{r MaLeaderBoardChunk, echo = FALSE, results = 'asis', message=FALSE, warning=FALSE}
+library(DT)
+datatable(
+  iris,
+  extensions = 'Buttons', options = list(
+    dom = 'Bfrtip',
+    buttons =
+      list('copy', 'print', list(
+        extend = 'collection',
+        buttons = c('csv', 'excel', 'pdf'),
+        text = 'Download'
+      ))
+
+  )
+)
+```
+
+## Key Take-Aways
+
+* Lorem ipsum dolor sit amet, consectetur adipiscing elit^1^.
+* Fusce nec quam ut tortor interdum pulvinar id vitae magna.
+* Curabitur commodo consequat arcu et lacinia.
+* Proin at diam vitae lectus dignissim auctor nec dictum lectus.
+
+## Key Implications
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec quam ut tortor interdum pulvinar id vitae magna. Curabitur commodo consequat arcu et lacinia. Proin at diam vitae lectus dignissim auctor nec dictum lectus. Fusce venenatis eros congue velit feugiat, ac aliquam ipsum gravida. Cras bibendum malesuada est in tempus. Suspendisse tincidunt, nisi non finibus consequat, ex nisl condimentum orci, et dignissim neque est vitae nulla. Aliquam ut purus neque. Maecenas justo orci, semper eget purus eu, aliquet molestie mi. Duis convallis ut erat at faucibus. Quisque malesuada ante elementum, tempor felis et, faucibus orci. Praesent iaculis nisi lorem, non faucibus neque suscipit eu. Ut porttitor risus eu convallis tristique. Integer ac mauris a ex maximus consequat eget non felis. Pellentesque quis sem aliquet, feugiat ligula vel, convallis sapien. Ut suscipit nulla leo, id interdum justo ullamcorper et. Morbi porttitor viverra elit a dignissim.
+
+Integer vel placerat purus. Nulla facilisi. Etiam odio magna, porttitor et est nec, placerat pellentesque ex. Suspendisse aliquet facilisis elit, in placerat quam scelerisque sagittis. Pellentesque porttitor porta massa. In nec elit placerat, aliquet est a, mollis erat. Morbi congue ac nisi nec interdum. Nullam vehicula rutrum ex, quis ultrices nunc feugiat vitae. In accumsan nunc sapien, at consequat velit semper eget. Suspendisse mi tellus, elementum ut faucibus eu, sollicitudin vitae sapien.
+
+

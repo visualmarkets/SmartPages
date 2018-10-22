@@ -1,0 +1,34 @@
+name: CaSmartPages
+output_dir: _site
+navbar:
+  title: Cerulli Smart Pages
+  left:
+  - text: Thematic Chapters
+    href: Thematic_Chapter.html
+  - text: Quantitative Chapters
+    menu:
+    - text: Rep-as-Advisor
+      href: Rep-as-Advisor.html
+  - text: Glossary
+    href: Glossary.html
+  right:
+  - text: Applications
+    menu:
+    - text: PDF Download
+      href: www/cerulli-bond-report-en-us.pdf
+    - text: Launch Lodestar
+      href: https://www.cerulli.com/products-services/cerulli-lodestar/
+  - text: Contact Us
+    icon: fa-envelope
+    href: mailto:info@cerulli.com
+output:
+  html_document:
+    toc: yes
+    toc_float: yes
+    toc_depth: 2
+    include:
+      after_body: www/footer.html
+    css: www/style.css
+    lib_dir: site_libs
+    self_contained: no
+

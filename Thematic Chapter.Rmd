@@ -1,0 +1,222 @@
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(devtools)
+# library(tidyverse)
+library(lorem)
+# library(dplyr)
+library(quantmod)
+library(DT)
+
+
+library(highcharter)
+
+
+source("ChartStyle.R")
+data(economics_long, package = 'ggplot2')
+economics_long
+# sample(c(1:100), 2) %>% lipsum::lipsum[.]
+# sample(c(1:100), 6) %>% lipsum::lipsums[.]
+
+```
+
+# Robos Fail to Terminate
+### Traditional Advisors still raking in Fee's
+<br>
+
+## Executive Summary
+
+Pellentesque a iaculis lectus, a viverra neque. Pellentesque sodales ex commodo erat laoreet, non sodales velit lacinia. Maecenas eu eros diam. Nunc massa sapien, vulputate ut laoreet quis, suscipit quis risus. Nunc sapien turpis, fermentum vel ex vitae, semper imperdiet risus. Integer a lorem ut nisi blandit egestas eget nec enim. Mauris consectetur sed leo a imperdiet. Suspendisse faucibus elementum bibendum. Morbi vitae velit vitae arcu condimentum malesuada. Ut porttitor convallis sem et sodales. Aliquam volutpat placerat quam, a imperdiet sem scelerisque et.
+
+* For more information see [Exhibit 7.01](Rep-as-Advisor.html#701_ra_program_assets)
+* Praesent iaculis nisi lorem, non faucibus neque suscipit eu.
+* Pellentesque porttitor porta massa.
+* Nam congue pellentesque vehicula.
+* Sed eu ultrices urna.
+* Nullam eros urna, gravida ut elementum vitae, scelerisque a augue.
+<br>
+
+## Pellentesque porttitor porta massa.
+
+Maecenas posuere, purus non venenatis hendrerit, diam nisi vehicula erat, vel ultricies turpis dui non lorem. Quisque tristique arcu varius lectus feugiat tincidunt. Vivamus pellentesque volutpat est, id aliquam justo molestie consequat. Nullam porta efficitur elit, eu faucibus ipsum elementum vitae. Suspendisse potenti. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam convallis mi sit amet nunc pharetra congue.
+
+Pellentesque nec ante sed justo fermentum maximus lobortis sed orci. Ut hendrerit lacus dapibus dui commodo placerat. Donec gravida turpis vel erat fringilla, id lacinia justo auctor. Morbi vel malesuada elit. Duis ut dictum lacus, in gravida nulla. Integer convallis fermentum metus, vel elementum quam fermentum a. Morbi at dui tincidunt, laoreet mauris sed, commodo velit."
+
+### Click Hamburger in Upper Right to Download.
+```{r error=FALSE, message=FALSE, echo = FALSE}
+require(highcharter)
+
+economics_long2 <- economics_long %>%
+  dplyr::filter(variable %in% c("uempmed", "pop", "unemploy"))
+
+hchart(economics_long2, "line", hcaes(x = date, y = value01, group = variable)) %>%
+  hc_title(text = "Some Economic Data.", align = 'left') %>%
+  hc_subtitle(text = "Sources: Cerulli Associates & Pickering Associates",
+              align = 'left') %>%
+  hc_exporting(enabled = TRUE) %>%
+  hc_add_theme(caTheme)
+```
+
+Quisque metus nisl, pharetra id justo ut, gravida finibus arcu. Suspendisse vitae quam quis nulla porta volutpat. Vestibulum nec felis blandit, pulvinar lacus ac, efficitur felis. Vivamus ut maximus nulla. Fusce mi ligula, fringilla sed interdum eget, rutrum nec neque. Nunc faucibus, tortor sed euismod commodo, sem magna dapibus odio, eu finibus eros ligula nec augue. Suspendisse in lobortis nunc, eget blandit dolor. Phasellus sodales magna in tincidunt varius. In est urna, suscipit quis tempor eget, venenatis eu erat. Phasellus ut erat hendrerit, convallis risus luctus, aliquet ipsum. Proin non nunc quis orci eleifend vestibulum. Nulla ultrices quis est id pellentesque. Nullam faucibus pretium ex sed dignissim. Quisque accumsan pellentesque ex, ac blandit diam pellentesque ut.
+
+## Sed eu ultrices urna.
+
+Suspendisse scelerisque eleifend tempus. Cras sagittis nunc id urna semper convallis. Proin convallis elementum est, ut ornare purus imperdiet non. Interdum et malesuada fames ac ante ipsum primis in faucibus. In in elit vel lorem faucibus vehicula. Integer mattis mi nec massa dapibus, eu luctus elit imperdiet. Nulla vestibulum luctus tortor, at condimentum mauris accumsan ornare. Aenean interdum orci dolor, nec tempor mauris mattis eu. Vivamus a dui enim. Etiam interdum non lacus sodales hendrerit. Praesent scelerisque laoreet justo, id ultricies purus consequat in. Donec imperdiet enim dolor, vitae pulvinar magna sollicitudin eu. Aliquam ligula diam, faucibus varius purus condimentum, cursus varius orci. Sed ut porttitor magna, eu venenatis erat. Nulla sodales at enim quis eleifend. Ut eros elit, commodo vel tincidunt ac, fermentum nec augue.
+
+```{r error=FALSE, message=FALSE, echo = FALSE}
+SPY <- getSymbols("SPY", from = Sys.Date() - lubridate::years(1), auto.assign = FALSE)
+SPY <- adjustOHLC(SPY)
+
+SPY.SMA.10 <- SMA(Cl(SPY), n = 5)
+SPY.SMA.200 <- SMA(Cl(SPY), n = 100)
+SPY.RSI.14 <- RSI(Cl(SPY))
+SPY.RSI.SellLevel <- xts(rep(70, NROW(SPY)), index(SPY))
+SPY.RSI.BuyLevel <- xts(rep(30, NROW(SPY)), index(SPY))
+
+
+highchart(type = "stock") %>%
+  # create axis :)
+  hc_yAxis_multiples(
+    create_yaxis(3, height = c(2, 1, 1), turnopposite = TRUE)
+  ) %>%
+  # series :D
+  hc_add_series(SPY, yAxis = 0, name = "SPY") %>%
+  hc_add_series(SPY.SMA.10, yAxis = 0, name = "Fast MA") %>%
+  hc_add_series(SPY.SMA.200, yAxis = 0, name = "Slow MA") %>%
+  hc_add_series(SPY$SPY.Volume, color = "gray", yAxis = 1, name = "Volume", type = "column") %>%
+  hc_add_series(SPY.RSI.14, yAxis = 2, name = "Osciallator") %>%
+  hc_add_series(SPY.RSI.SellLevel,
+                yAxis = 2, name = "Sell level") %>%
+  hc_add_series(SPY.RSI.BuyLevel, yAxis = 2, name = "Buy level")%>%
+  hc_title(text = "Some Economic Data.", align = 'left') %>%
+  hc_subtitle(text = "Sources: Cerulli Associates & Pickering Associates",
+              align = 'left') %>%
+  hc_exporting(enabled = TRUE) %>%
+  hc_add_theme(caTheme)
+```
+
+Pellentesque nec ante sed justo fermentum maximus lobortis sed orci. Ut hendrerit lacus dapibus dui commodo placerat. Donec gravida turpis vel erat fringilla, id lacinia justo auctor. Morbi vel malesuada elit. Duis ut dictum lacus, in gravida nulla. Integer convallis fermentum metus, vel elementum quam fermentum a. Morbi at dui tincidunt, laoreet mauris sed, commodo velit."
+
+Quisque metus nisl, pharetra id justo ut, gravida finibus arcu. Suspendisse vitae quam quis nulla porta volutpat. Vestibulum nec felis blandit, pulvinar lacus ac, efficitur felis. Vivamus ut maximus nulla. Fusce mi ligula, fringilla sed interdum eget, rutrum nec neque. Nunc faucibus, tortor sed euismod commodo, sem magna dapibus odio, eu finibus eros ligula nec augue. Suspendisse in lobortis nunc, eget blandit dolor. Phasellus sodales magna in tincidunt varius. In est urna, suscipit quis tempor eget, venenatis eu erat. Phasellus ut erat hendrerit, convallis risus luctus, aliquet ipsum. Proin non nunc quis orci eleifend vestibulum. Nulla ultrices quis est id pellentesque. Nullam faucibus pretium ex sed dignissim. Quisque accumsan pellentesque ex, ac blandit diam pellentesque ut.
+
+
+
+# Continued Growth of RPM
+###Despite Scott's best efforts.
+<br>
+
+## Executive Summary
+
+Pellentesque a iaculis lectus, a viverra neque. Pellentesque sodales ex commodo erat laoreet, non sodales velit lacinia. Maecenas eu eros diam. Nunc massa sapien, vulputate ut laoreet quis, suscipit quis risus. Nunc sapien turpis, fermentum vel ex vitae, semper imperdiet risus. Integer a lorem ut nisi blandit egestas eget nec enim. Mauris consectetur sed leo a imperdiet. Suspendisse faucibus elementum bibendum. Morbi vitae velit vitae arcu condimentum malesuada. Ut porttitor convallis sem et sodales. Aliquam volutpat placerat quam, a imperdiet sem scelerisque et.
+
+* In fermentum ligula ut mi malesuada, nec varius dui dapibus.
+* Praesent iaculis nisi lorem, non faucibus neque suscipit eu.
+* Pellentesque porttitor porta massa.
+* Nam congue pellentesque vehicula.
+* Sed eu ultrices urna.
+* Nullam eros urna, gravida ut elementum vitae, scelerisque a augue.
+<br>
+
+## Pellentesque porttitor porta massa.
+
+Maecenas posuere, purus non venenatis hendrerit, diam nisi vehicula erat, vel ultricies turpis dui non lorem. Quisque tristique arcu varius lectus feugiat tincidunt. Vivamus pellentesque volutpat est, id aliquam justo molestie consequat. Nullam porta efficitur elit, eu faucibus ipsum elementum vitae. Suspendisse potenti. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam convallis mi sit amet nunc pharetra congue.
+
+### Awesome Plots {.tabset}
+
+#### Ima TABLE!
+```{r echo = FALSE, message = FALSE, error=FALSE}
+library(purrr) # map function to make grouped categories argument
+library(dplyr) # for select function
+
+data(mpg, package = "ggplot2")
+
+mpgg <- mpg %>%
+  filter(class %in% c("suv", "compact", "midsize")) %>%
+  group_by(class, manufacturer) %>%
+  summarize(count = n())
+
+categories_grouped <- mpgg %>%
+  group_by(name = class) %>%
+  do(categories = .$manufacturer) %>%
+  list_parse()
+
+highchart() %>%
+  hc_xAxis(categories = categories_grouped) %>%
+  hc_add_series(data = mpgg, type = "bar", hcaes(y = count, color = manufacturer),
+                showInLegend = FALSE)
+```
+
+#### Ima MAP!
+```{r echo = FALSE, error=FALSE, message=FALSE}
+getContent <- function(url) {
+  library(httr)
+  content(GET(url))
+}
+
+world <- getContent("https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json")
+# is text
+world <- jsonlite::fromJSON(world, simplifyVector = FALSE)
+
+# http://cedeusdata.geosteiniger.cl/layers/geonode:mundo_corrientes_maritimas
+marine <- getContent("http://cedeusdata.geosteiniger.cl/geoserver/wfs?srsName=EPSG%3A4326&typename=geonode%3Amundo_corrientes_maritimas&outputFormat=json&version=1.0.0&service=WFS&request=GetFeature")
+# marine <- geojsonio::as.json(marine)
+
+
+# http://cedeusdata.geosteiniger.cl/layers/geonode:mundo_limites_placas
+plates <- getContent("http://cedeusdata.geosteiniger.cl/geoserver/wfs?srsName=EPSG%3A4326&typename=geonode%3Amundo_limites_placas&outputFormat=json&version=1.0.0&service=WFS&request=GetFeature")
+# plates <- geojsonio::as.json(plates)
+
+# http://cedeusdata.geosteiniger.cl/layers/geonode:mundo_volcanes
+volcano <- getContent("http://cedeusdata.geosteiniger.cl/geoserver/wfs?srsName=EPSG%3A4326&typename=geonode%3Amundo_volcanes&outputFormat=json&version=1.0.0&service=WFS&request=GetFeature")
+# volcano <- geojsonio::as.json(volcano)
+```
+
+```{r echo = FALSE, message = FALSE, error=FALSE}
+highchart(type = "map") %>%
+  hc_chart(backgroundColor = "#161C20") %>%
+  hc_add_series(mapData = world, showInLegend = FALSE, nullColor = "#424242",
+                borderWidth = 0) %>%
+  hc_add_series(data = marine, type = "mapline", geojson = TRUE,
+                color = "#2980b9", name = "Marine currents",
+                tooltip = list(pointFormat = "{point.properties.NOMBRE}")) %>%
+  hc_add_series(data = plates, type = "mapline", lineWidth = 2, zIndex = -1, geojson = TRUE,
+                color = "#d35400", name = "Plates",
+                tooltip = list(pointFormat = "{point.properties.TIPO}")) %>%
+  hc_add_series(data = volcano, type = "mappoint", color = hex_to_rgba("#f1c40f", 0.4),
+                geojson = TRUE, name = "Volcanos",
+                tooltip = list(pointFormat = "{point.properties.NOMBRE}"),
+                marker = list(lineWidth = 0, radius = 2))
+```
+
+
+Pellentesque nec ante sed justo fermentum maximus lobortis sed orci. Ut hendrerit lacus dapibus dui commodo placerat. Donec gravida turpis vel erat fringilla, id lacinia justo auctor. Morbi vel malesuada elit. Duis ut dictum lacus, in gravida nulla. Integer convallis fermentum metus, vel elementum quam fermentum a. Morbi at dui tincidunt, laoreet mauris sed, commodo velit.
+
+
+Morbi volutpat arcu ac lacus facilisis tristique. Nam vel egestas nisi. Vestibulum ac risus eget felis tristique faucibus. Nulla nisl quam, vulputate eget velit ac, gravida dignissim ex. Proin vel arcu quis dolor lobortis efficitur et eu velit. Suspendisse faucibus, est volutpat viverra commodo, eros urna egestas turpis, ac sagittis est elit ac nunc. Sed dapibus tempus bibendum. Aliquam tempus eu felis vitae sodales. Integer pretium rhoncus ornare. Nunc finibus tortor lectus, eget tempus lacus elementum a. Morbi est velit, faucibus a ornare quis, congue ut elit. Vestibulum tincidunt dictum ligula, vel consequat mauris volutpat id. Nullam aliquam semper mauris, a vehicula sapien mollis nec.
+
+Maecenas bibendum tellus mauris, eu efficitur enim consectetur nec. Sed et ante at tellus accumsan blandit et sit amet odio. Donec sagittis lorem vel erat laoreet, at vestibulum nunc sodales. Nulla odio turpis, tincidunt ac mollis vitae, vehicula a nulla. Aliquam fermentum facilisis fermentum. Cras ac tincidunt magna, imperdiet feugiat erat. In faucibus quis mauris rutrum tempus. Sed ullamcorper in risus eget varius. Suspendisse sodales tempus sem ac pretium. In pharetra at quam eu tristique. Etiam eu velit ipsum. Aliquam erat volutpat. Nam malesuada leo turpis. In massa ligula, commodo at augue sit amet, ullamcorper tempus turpis.
+
+## Nam congue pellentesque vehicula.
+
+Donec sit amet nunc faucibus, tincidunt leo id, facilisis est. Proin porta imperdiet posuere. Fusce porttitor, urna sed tincidunt facilisis, ex ligula cursus orci, in pretium odio velit vel neque. Nullam accumsan lectus a tellus feugiat viverra. Morbi sagittis massa quis tellus semper, et pulvinar lacus fringilla. Phasellus sed tempus velit. Maecenas dignissim felis vulputate tempus aliquam. Fusce nisi enim, lacinia sit amet nunc eu, consequat dictum ligula. Donec ac ante at mauris molestie tempus a quis ante. Donec sodales purus placerat consectetur auctor. In porta id lorem sed venenatis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a pellentesque enim. Aenean at arcu mauris. Pellentesque vel odio odio. Maecenas ligula nulla, ornare in congue fringilla, aliquam commodo dui.
+
+### Look at this table!
+```{r echo = FALSE, results = 'asis', message=FALSE, warning=FALSE}
+library(DT)
+datatable(
+  mtcars,
+  extensions = 'Buttons', options = list(
+    dom = 'Bfrtip',
+    buttons =
+      list('copy', 'print', list(
+        extend = 'collection',
+        buttons = c('csv', 'excel', 'pdf'),
+        text = 'Download'
+      ))
+
+  )
+)
+```
+
+Suspendisse scelerisque eleifend tempus. Cras sagittis nunc id urna semper convallis. Proin convallis elementum est, ut ornare purus imperdiet non. Interdum et malesuada fames ac ante ipsum primis in faucibus. In in elit vel lorem faucibus vehicula. Integer mattis mi nec massa dapibus, eu luctus elit imperdiet. Nulla vestibulum luctus tortor, at condimentum mauris accumsan ornare. Aenean interdum orci dolor, nec tempor mauris mattis eu. Vivamus a dui enim. Etiam interdum non lacus sodales hendrerit. Praesent scelerisque laoreet justo, id ultricies purus consequat in. Donec imperdiet enim dolor, vitae pulvinar magna sollicitudin eu. Aliquam ligula diam, faucibus varius purus condimentum, cursus varius orci. Sed ut porttitor magna, eu venenatis erat. Nulla sodales at enim quis eleifend. Ut eros elit, commodo vel tincidunt ac, fermentum nec augue.
+
+Suspendisse rhoncus scelerisque orci non semper. Etiam commodo nibh eu imperdiet finibus. Nunc lobortis id augue vitae volutpat. Aenean congue urna non tincidunt feugiat. Proin porttitor libero non nisl interdum laoreet. Integer sit amet mauris mollis, sagittis mi ultricies, pharetra tellus. Mauris iaculis eget purus placerat malesuada. Proin nec dui ut eros luctus sollicitudin. Aliquam malesuada nisl vitae libero aliquam, non sollicitudin erat tempor. Sed elit mauris, cursus non velit id, bibendum aliquet ligula. In eu ultricies augue.
